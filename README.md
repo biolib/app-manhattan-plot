@@ -49,5 +49,3 @@ ID	rs4148551	 NCBI SNP entry: https://www.ncbi.nlm.nih.gov/snp/?term=rs4148551
 ID	rs7508610	 NCBI SNP entry: https://www.ncbi.nlm.nih.gov/snp/?term=rs7508610
 \\ 
 ```
-
-![Manhattan plot](images/plot.png)
