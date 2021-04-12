@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
 import argparse
-import base64
 
 # utility function to parse csv
 def format_data(buffer, sep ='\t', chromosome ='chr', p_value ='p_wald'):
@@ -50,7 +49,10 @@ def generate_manhattan(pyhattan_object, significance = 0.05, colors = ['#40AEA0'
 parser = argparse.ArgumentParser()
 parser.add_argument('--in', help = 'Input file', dest = 'file')
 parser.add_argument('--sig', help = 'Significance', dest='significance')
+parser.add_argument('--colors', help="Color scheme", dest='colors')
 args = parser.parse_args()
+
+colors = args.colors.split(",")
 
 # define some variables
 title = 'Title'
@@ -68,9 +70,7 @@ significant_genes = []
 generate_manhattan(data, significance=float(args.significance), ref_snp='refSNP', significant_genes=significant_genes)
 
 # Produce Markdown
-file_data = open("plot.png", "rb").read()
-md_data = base64.b64encode(file_data).decode('ascii')
-markdown_of_plot = '![picture](data:{};base64,{})'.format('image/png', md_data)
+markdown_of_plot = '![Manhattan plot](plot.png)'
 
 # generate info message
 if len(significant_genes) == 0:
