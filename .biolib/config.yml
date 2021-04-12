@@ -1,9 +1,15 @@
-biolib_version: 1
-description_file: README.md
+biolib_version: 2
 modules:
     main:
-        path: src/main.py
-        executor: 'bl-python3:*'
+        image: biolib://biolib/python3:*
+        command: /home/biolib/src/root.py
+        working_directory: /home/biolib/
+        input_files:
+            - COPY / /home/biolib/
+        output_files:
+            - COPY /home/biolib/ /
+        source_files:
+            - COPY / /home/biolib/
 output_type: markdown
 arguments:
     -
