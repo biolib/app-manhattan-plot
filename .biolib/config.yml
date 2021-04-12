@@ -1,0 +1,35 @@
+biolib_version: 1
+description_file: README.md
+modules:
+    main:
+        path: src/main.py
+        executor: 'bl-python3:*'
+output_type: markdown
+arguments:
+    -
+        default_value: example_manhattan.csv
+        description: Add input file
+        key: '--in'
+        key_value_separator: ' '
+        required: true
+        type: file
+    -
+        default_value: '0.005'
+        description: Add significance level
+        key: '--sig'
+        key_value_separator: ' '
+        required: false
+        type: number
+    -
+        default_value: '#40AEA0,#0B405C'
+        description: 'Choose which colors to plot the chromosome SNPs:'
+        key: '--colors'
+        key_value_separator: ' '
+        required: false
+        type: dropdown
+        options:
+            Set: >-
+                #d94165,#ef476f,#f78c6b,#ffd166,#c1d375,#83d483,#0cb0a9,#118ab2,#0c637f,#073b4c
+            Black/Gray: '#2B2D42,#8D99AE'
+            BioLib: '#40AEA0,#0B405C'
+
