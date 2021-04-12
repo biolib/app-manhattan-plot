@@ -1,20 +1,19 @@
 # Manhattan Plot Generator
 This tool returns a report and a plot from the results of Genome-Wide Association (GWA) studies. It reads text files (`.csv`, `.txt`) that must include columns for a chromosome, p-values, and, optionally, reference SNP ID. This tool is based on the Manhattan plot tool developed by “Pudkip.” See repository: `https://github.com/Pudkip/Pyhattan`.
 
+#### ####
 
 __Input:__
-
 A text file with chromosome number columns, p-value, and optionally, the reference SNP ID. As input other parameters are requested: significance level (0.05 as default)
 
+#### ####
 
 __Output:__
-
 A report with the significant IDs related to strongly associated loci and a plot.
 
-#### Example 
+#### Example ####
 
 __Input:__
-
 ```
 ,chromosome,refSNP,p_value
 1,1,rs1802353,0.42055101
