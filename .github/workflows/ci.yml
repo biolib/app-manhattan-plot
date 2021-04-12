@@ -1,0 +1,30 @@
+name: CI
+
+on: push
+
+env:
+    BIOLIB_LOG: debug
+    BIOLIB_PROJECT_URI: example-apps/ManhattanPlotGenerator
+
+jobs:
+    build-and-publish:
+        name: Biolib push if on main
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
+
+            -   name: Setup Python
+                uses: actions/setup-python@v2
+                with:
+                    python-version: 3.8.6
+
+            -   name: Install BioLib CLI
+                run: pip3 install pybiolib
+
+            -   name: Publish new version to BioLib if on main branch
+                if: github.ref == 'refs/heads/master'
+                run: biolib push $BIOLIB_PROJECT_URI
+                env:
+                    BIOLIB_EMAIL: ${{ secrets.BIOLIB_EMAIL }}
+                    BIOLIB_PASSWORD: ${{ secrets.BIOLIB_PASSWORD }}
